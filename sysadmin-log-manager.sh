@@ -40,7 +40,7 @@ show_error_if_failed() {
 while true; do
 
 CHOICE=$(whiptail --title "SysAdmin Log" --menu "Choose an option" 25 78 16 \
-"Quit" "Quit the application" \
+"0" "Exit" \
 "1" "Show all of the logs files." \
 "2" "Truncate a specific log file." \
 "3" "Truncate all of the files." \
@@ -62,7 +62,7 @@ exitstatus=$?
 FILESINFO=$(ls -I "*.gz" -lh /var/log)
 
 
-if [[ "$CHOICE" = "Quit" || "$exitstatus" != 0 ]]; then
+if [[ "$CHOICE" = "0" || "$exitstatus" != 0 ]]; then
 
     echo "See you later!"
     break
