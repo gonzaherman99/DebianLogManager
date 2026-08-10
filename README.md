@@ -1,0 +1,62 @@
+SysAdmin Log Manager
+
+This is whiptail terminal UI for Linux log-management and some systemd journal tasks, like  viewing, truncating, and searching logs in the /var/log direcotry, as well as inspecting the logrotate config, and querying journalctl.
+
+Features
+
+-Interactive, menu interface
+-View all log files in /var/log (the compresses .gz archives excluded)
+-Truncate a single log file, or every log file at once
+-View and edit logrotate.conf located in the logrotate.d directory
+-Check disk usage of /var/log and of the systemd journal
+-Query journalctl:
+  - Last n lines
+  - Filter by time range (using the YYYY-MM-DD HH:MM:SS format)
+-Search for a text pattern inside a specific log file
+-Check the status of a systemd service
+
+Requirements
+
+-Linux with bash
+-whiptail
+-sudo privileges
+-systemd
+-nano (used to edit logrotate.conf in option 4, swap for your preferred editor if you wish)
+-Standard coreutils/util-linux
+
+Installation
+
+chmod +x sysadmin-log-manager.sh
+
+Usage
+
+./sysadmin-log-manager.sh
+
+Warnings
+
+-Options 2 and 3 are destructive and irreversible. They zero out log file contents via truncate -s 0, with no built-in backup. Test in a non-production environment first, or make sure the affected logs are already rotated/archived elsewhere.
+-sudo password prompts appear in the terminal, not inside a whiptail dialog.
+
+
+MIT License
+
+Copyright (c) 2026 Luis Antonio Gonzalez Herman
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
